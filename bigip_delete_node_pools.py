@@ -67,7 +67,6 @@ EXAMPLES = '''
             remove_port: True
             delete_emptypools: True
         delegate_to: localhost
-        loop: "{{ ip_list}}"
 '''
 
 RETURN = '''
