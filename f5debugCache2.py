@@ -2,7 +2,7 @@ from f5.bigip import ManagementRoot
 import sys
 import time
 
-sys.setrecursionlimit(5000) # Allow python to recurse more than the default 999. There are over 4000 Pools we need to iterate through :(
+sys.setrecursionlimit(10000) # Allow python to recurse more than the default 999. There are over 4000 Pools we need to iterate through :(
 
 # Connect to the BigIP and configure the basic objects
 mgmt = ManagementRoot('', '', '')
