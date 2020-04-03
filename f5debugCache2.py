@@ -23,6 +23,9 @@ def deletenode():
         if node.address in ip:
             print(ip)
             print("Inside Deletenode func " + node.address)
+            f=open("node_delete" + now.strftime("%Y-%m-%d %H:%M"), "a")
+            f.write(node.address)
+            f.close()
             node.delete()
             print("Deleting")# why is it not reading this
 
@@ -34,6 +37,20 @@ def deletepool():
             print(pool_name)
             print("Inside deletepool func")
             print(pool)
+            f=open("pool_delete" + now.strftime("%Y-%m-%d %H:%M"), "a")
+            f.write(pool.name)
+            f.close()
+            pool.delete()
+
+def deleteemptypool(self):
+    for pool in self.f5_pools:
+        if pool.members_s.items:
+            continue                    
+        else:
+            print(pool.name)
+            f=open("empty_pools" + now.strftime("%Y-%m-%d %H:%M"), "a")
+            f.write(pool.name)
+            f.close()                    
             pool.delete()
 
 print("starting members search")
@@ -54,9 +71,4 @@ def main():
     print( end - start)
 
 if __name__ == '__main__':
-    main()    
-
-# for node in f5_nodes:
-#     if node.address in ip:  
-#         print("Initial Pool Delete")
-#         deletepool()
+    main()
